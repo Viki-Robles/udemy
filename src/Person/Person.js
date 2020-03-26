@@ -5,7 +5,7 @@ export default function Person (props) {
         <>
         <div onClick={props.click}>My name is {props.name} and I am {props.age} old.</div>
         <p>{props.children}</p>
-        <input type="text" onChange={props.changed}></input>
+        <input type="text" onChange={props.changed} value={props.name}></input>
         </>
     );
 }
