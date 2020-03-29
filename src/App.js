@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+
+
 
 
 class App extends Component {
@@ -22,7 +25,7 @@ class App extends Component {
         { name: "Nik", age: 57 },
         { name: "Stephanie", age: 20 }
       ]
-      
+
     })
   }
 
@@ -51,11 +54,12 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person
-              key={person.id}
-              name={person.name}
-              age={person.age} 
-              changed={this.nameChangedHandler}/>
+            return <ErrorBoundary key={person.id}>
+              <Person
+                name={person.name}
+                age={person.age}
+                changed={this.nameChangedHandler} />
+            </ErrorBoundary>
           })}
         </div>
       );
@@ -75,20 +79,71 @@ class App extends Component {
 export default App;
 
 
-/*<Person
-    name={this.state.persons[0].name}
-    age={this.state.persons[0].age} />
 
-  <Person
-    name={this.state.persons[1].name}
-    age={this.state.persons[1].age}
-    click={this.switchNameHandler.bind( this, "Dorothy")}
-    changed={this.nameChangedHandler}
-  />
 
-  <Person
-    name={this.state.persons[2].name}
-    age={this.state.persons[2].age} />
 
-  );
-}*/
+
+
+
+/*
+
+
+
+new Component example:
+state = {
+  fruits: [
+    {name: "orange", number: 8},
+    {name: "lemon", number: 9},
+    {name: "apple", number: 10},
+
+
+  ]
+}
+
+
+toggleButton = () => {
+  this.setState({
+    fruits: [
+      {name: "grapefruit", number: 1},
+      {name: "mandarin", number: 2},
+      {name: "grapes", number: 3}
+    ]
+  })
+}
+
+changeName = (event) => {
+  this.setState({
+    fruits: [
+      {name: "grapefruit", number: 1},
+      {name: "mandarin", number: 2},
+      {name: event.target.value, number: 3}
+    ]
+  })
+}
+
+  render() {
+
+    return (
+      <div className="App">
+        <h1>Welcome to my Udemy app</h1>
+        <Card
+        name={this.state.fruits[0].name}
+        number={this.state.fruits[0].number}/>
+        <button onClick={() => this.toggleButton()}>Change Fruit</button>
+
+        <Card
+        name={this.state.fruits[1].name}
+        number={this.state.fruits[1].number}/>
+
+        <Card
+        name={this.state.fruits[2].name}
+        number={this.state.fruits[2].number}
+        changed={this.changeName}/>
+
+        </div>
+    );
+  }
+}
+
+export default App;
+*/
