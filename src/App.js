@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Stick from './Stick/Stick';
 
 
 
 
 class App extends Component {
 
+  
   state = {
     persons: [
       { name: "Viki", age: 28 },
@@ -29,7 +30,11 @@ class App extends Component {
     })
   }
 
-
+  deletePersonHandler = (personIndex) => {
+    const persons = this.state.persons.slice();
+    persons.splice(personIndex, 1);
+    this.setState({ persons: persons});
+  }
 
   nameChangedHandler = (event) => {
     this.setState({
@@ -54,12 +59,13 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <ErrorBoundary key={person.id}>
-              <Person
+            return <Person
+                key={person.id}
+                //click={this.deletePersonHandler(index)}
                 name={person.name}
                 age={person.age}
                 changed={this.nameChangedHandler} />
-            </ErrorBoundary>
+           
           })}
         </div>
       );
@@ -69,7 +75,7 @@ class App extends Component {
         <h1>Welcome to my Udemy app</h1>
         <button onClick={this.togglePersonsHnadler}>Toggle Persons</button>
         {persons}
-
+        <Stick/>
       </div>
     );
   }

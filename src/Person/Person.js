@@ -2,11 +2,6 @@ import React from 'react';
 import { randomBytes } from 'crypto';
 
 export default function Person (props) {
-//creating an error example
-const rnd = Math.random();
-if (rnd > 0.9) {
-    throw new Error ("Something went wrong");
-}
 
     return(
         <>
@@ -17,3 +12,9 @@ if (rnd > 0.9) {
     );
 }
 
+/*
+//creating an error example
+const rnd = Math.random();
+if (rnd > 0.9) {
+    throw new Error ("Something went wrong");
+*/
