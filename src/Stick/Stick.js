@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import cards from '../Person/Person';
 
 
 const Stick = () => {

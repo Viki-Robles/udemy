@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import Stick from './Stick/Stick';
-
+import Hook from './Hook/Hook';
 
 
 
@@ -76,6 +76,7 @@ class App extends Component {
         <button onClick={this.togglePersonsHnadler}>Toggle Persons</button>
         {persons}
         <Stick/>
+        <Hook/>
       </div>
     );
   }
