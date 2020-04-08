@@ -8,10 +8,10 @@ export default class BurgerBuilder extends Component {
         super(props)
         this.state = {
             ingredients: {
-                cheese: 2,
-                meat:2,
-                salad:1,
-                bacon:1
+                cheese: 0,
+                meat:0,
+                salad:0,
+                bacon:0
 
             }
         }
