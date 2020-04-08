@@ -9,6 +9,7 @@ const controls = [
     { label: 'Meat', type: 'meat'},
 ]
 
+//Adding dynamically the buildcontrols
 export default function BuildControls(props) {
     return(
         <div className="BuildControls">
