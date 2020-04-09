@@ -10,6 +10,7 @@ class App extends Component {
   render() {      
     return (
       <div>
+      <h1>Make Your Burger</h1>
       <Layout>
         <BurgerBuilder/>
       </Layout>
