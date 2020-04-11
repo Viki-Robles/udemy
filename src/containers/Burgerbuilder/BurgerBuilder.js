@@ -13,9 +13,28 @@ export default class BurgerBuilder extends Component {
                 salad: 0,
                 bacon: 0
 
-            }
+            },
+            purchasable:false
         }
+        
 
+    }
+
+    //idKey is the numbers of the ingredient like 1, 3, 0..
+
+    updatePurchaseState() {
+        const ingredients = {
+            ...this.state.ingredients
+        };
+        const sum = Object.keys(ingredients)
+            .map(idKey => {
+                return ingredients[idKey];
+            })
+            .reduce((sum, el)=> {
+                return sum + el;
+            }, 0);
+            this.setState({purchasable: sum > 0});
+        
     }
 
     addIngredientHandler = (type) => {
@@ -39,6 +58,7 @@ export default class BurgerBuilder extends Component {
         };
         updatedIngredients[type] = updatedCount;
         this.setState({ ingredients: updatedIngredients });
+        this.updatePurchaseState();
     };
 
     render() {
@@ -47,7 +67,8 @@ export default class BurgerBuilder extends Component {
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControls
                     ingredientAdded={this.addIngredientHandler}
-                    ingredientRemoved={this.removeIngredientHandler} />
+                    ingredientRemoved={this.removeIngredientHandler} 
+                    purchasable={this.state.purchasable}/>
             </Aux>
         );
     }
