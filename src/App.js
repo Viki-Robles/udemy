@@ -7,22 +7,21 @@ import BurgerBuilder from './containers/Burgerbuilder/BurgerBuilder';
 
 
 class App extends Component {
-  render() {      
+  render() {
     return (
       <div>
-      <h1>Make Your Burger</h1>
-      <Layout>
-        <BurgerBuilder/>
-      </Layout>
+        <Layout>
+          <BurgerBuilder />
+        </Layout>
       </div>
     );
   }
-  
-  
-  }
 
 
-  
+}
+
+
+
 
 
 
