@@ -374,17 +374,7 @@ module.exports = function(webpackEnv) {
             //This is my css module added
             
               
-              {
-                test: /\.css$/,
-                loader: 'style-loader'
-              }, {
-                test: /\.css$/,
-                loader: 'css-loader',
-                query: {
-                  modules: true,
-                  localIdentName: ''
-                }
-              },
+              
 
 
 
