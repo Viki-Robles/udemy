@@ -364,6 +364,31 @@ module.exports = function(webpackEnv) {
                 name: 'static/media/[name].[hash:8].[ext]',
               },
             },
+
+            {
+              test: /\.css$/,
+              loader: 'style-loader'
+            }, 
+            
+
+            //This is my css module added
+            
+              
+              {
+                test: /\.css$/,
+                loader: 'style-loader'
+              }, {
+                test: /\.css$/,
+                loader: 'css-loader',
+                query: {
+                  modules: true,
+                  localIdentName: ''
+                }
+              },
+
+
+
+
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
@@ -436,8 +461,6 @@ module.exports = function(webpackEnv) {
               exclude: cssModuleRegex,
               use: getStyleLoaders({
                 importLoaders: 1,
-                modules:true,
-                localIdentName:'',
                 sourceMap: isEnvProduction && shouldUseSourceMap,
               }),
               // Don't consider CSS imports dead code even if the
@@ -674,3 +697,17 @@ module.exports = function(webpackEnv) {
     performance: false,
   };
 };
+
+/*{
+  test: /\.css$/,
+  use:[
+    require.resolve('style-loader'),
+    {
+      loader:require.resolve('css-loader'),
+      options: {
+        importLoaders:1,
+        modules:true,
+        localIdentName:''
+      },
+    },
+  ],*/
